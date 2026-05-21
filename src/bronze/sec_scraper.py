@@ -1,6 +1,8 @@
 import requests
 import json
 from datetime import datetime, timedelta
+from dotenv import load_dotenv
+load_dotenv()
 import sys
 import os
 
@@ -8,7 +10,7 @@ sys.path.append(os.path.join(os.path.dirname(__file__), '..', '..'))
 from src.db import execute_query
 
 HEADERS = {
-    "User-Agent": "Spotcheck project daksh2179@gmail.com",
+    "User-Agent": os.getenv("SEC_USER_AGENT", "Spotcheck youremail@example.com"),
     "Accept-Encoding": "gzip, deflate",
 }
 
