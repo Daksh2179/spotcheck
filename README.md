@@ -1,4 +1,3 @@
-```markdown
 # Spotcheck
 
 Spotcheck is an automated pipeline that tracks SEC Form 4 insider trading filings and correlates them with subsequent stock price movements.
@@ -9,9 +8,9 @@ Corporate insiders (executives, directors, major shareholders) are required to r
 
 Medallion Architecture batch ETL pipeline orchestrated by Apache Airflow.
 
-**Bronze** — Raw Form 4 filings from SEC EDGAR + stock price history from yfinance
+**Bronze** — Raw Form 4 filings from SEC EDGAR and stock price history from yfinance
 
-**Silver** — Cleaned and joined dataset with price movement calculations (2 day and 30 day windows after each transaction)
+**Silver** — Cleaned and joined dataset with price movement calculations across 2 day and 30 day windows after each transaction
 
 **Gold** — Aggregated analytics tables ready for Power BI dashboard
 
@@ -25,33 +24,13 @@ Medallion Architecture batch ETL pipeline orchestrated by Apache Airflow.
 - yfinance
 - Power BI
 
-## Project Structure
-
-```
-spotcheck/
-├── dags/
-│   └── spotcheck_pipeline.py
-├── src/
-│   ├── bronze/
-│   │   ├── sec_scraper.py
-│   │   └── price_fetcher.py
-│   ├── silver/
-│   │   └── transformer.py
-│   ├── gold/
-│   │   └── aggregator.py
-│   └── db.py
-├── sql/
-├── docker-compose.yml
-└── requirements.txt
-```
-
 ## Setup
 
 1. Clone the repo and create `.env` from `.env.example`
-2. Start PostgreSQL: `docker-compose up -d`
-3. Create a Python virtual environment and install dependencies: `pip install -r requirements.txt`
+2. Start PostgreSQL with `docker-compose up -d`
+3. Create a Python virtual environment and install dependencies with `pip install -r requirements.txt`
 4. Initialize Airflow and create an admin user
-5. Start Airflow: `airflow standalone`
+5. Start Airflow with `airflow standalone`
 6. Trigger the pipeline from `http://localhost:8080`
 
 The pipeline runs automatically at 11am on weekdays once Airflow is running.
