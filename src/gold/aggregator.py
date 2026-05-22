@@ -56,7 +56,7 @@ def build_top_insiders():
         WHERE pct_change_30d IS NOT NULL
         AND insider_name IS NOT NULL
         GROUP BY insider_name, insider_title, company_name, ticker
-        HAVING COUNT(*) >= 2
+        HAVING COUNT(*) >= 1
         ORDER BY win_rate DESC
     """
     execute_query(query)

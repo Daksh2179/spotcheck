@@ -88,7 +88,8 @@ def transform_and_store():
             pct_change_2d = calculate_pct_change(price_2d_before, price_2d_after)
             pct_change_30d = calculate_pct_change(price_2d_before, price_30d_after)
 
-            is_buy = True if filing["transaction_type"] in ["P", "A"] else False
+            transaction_type = filing.get("transaction_type")
+            is_buy = True if transaction_type in ["P", "A"] else True if transaction_type is None else False
 
             query = """
                 INSERT INTO silver_insider_trades

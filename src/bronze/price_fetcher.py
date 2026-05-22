@@ -67,7 +67,7 @@ def run():
     print(f"Fetching prices for {len(tickers)} tickers: {tickers}")
     
     end_date = datetime.today().strftime("%Y-%m-%d")
-    start_date = (datetime.today() - timedelta(days=40)).strftime("%Y-%m-%d")
+    start_date = (datetime.today() - timedelta(days=100)).strftime("%Y-%m-%d")
     
     for ticker in tickers:
         df = fetch_prices_for_ticker(ticker, start_date, end_date)
