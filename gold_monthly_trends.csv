@@ -1,0 +1,4 @@
+id,period_month,total_buys,total_sells,avg_pct_change_30d_buys,avg_pct_change_30d_sells,total_trade_value,created_at
+6,2026-02-01,2,0,-6.5605,,,2026-05-22 21:55:00.377974
+7,2026-03-01,39,0,3.6977,,,2026-05-22 21:55:00.377974
+8,2026-04-01,71,0,6.9122,,,2026-05-22 21:55:00.377974
