@@ -1,0 +1,22 @@
+CREATE TABLE IF NOT EXISTS silver_insider_trades (
+    id SERIAL PRIMARY KEY,
+    accession_number VARCHAR(25),
+    filed_date DATE,
+    company_name VARCHAR(255),
+    ticker VARCHAR(10),
+    insider_name VARCHAR(255),
+    insider_title VARCHAR(255),
+    transaction_type VARCHAR(10),
+    transaction_date DATE,
+    shares_traded NUMERIC,
+    price_per_share NUMERIC,
+    shares_owned_after NUMERIC,
+    trade_value NUMERIC,
+    price_2d_before NUMERIC,
+    price_2d_after NUMERIC,
+    price_30d_after NUMERIC,
+    pct_change_2d NUMERIC,
+    pct_change_30d NUMERIC,
+    is_buy BOOLEAN,
+    created_at TIMESTAMP DEFAULT NOW()
+);

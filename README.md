@@ -24,13 +24,23 @@ Medallion Architecture batch ETL pipeline orchestrated by Apache Airflow.
 - yfinance
 - Power BI
 
+## Project Structure
+
+- `dags/` — Airflow DAG defining the Bronze to Silver to Gold pipeline
+- `src/bronze/` — SEC EDGAR scraper and yfinance price fetcher
+- `src/silver/` — Transformer that cleans filings and calculates price movements
+- `src/gold/` — Aggregator that builds analytics ready tables
+- `src/db.py` — PostgreSQL connection layer
+- `sql/` — Schema definitions for all Bronze, Silver and Gold tables
+
 ## Setup
 
 1. Clone the repo and create `.env` from `.env.example`
 2. Start PostgreSQL with `docker-compose up -d`
 3. Create a Python virtual environment and install dependencies with `pip install -r requirements.txt`
-4. Initialize Airflow and create an admin user
-5. Start Airflow with `airflow standalone`
-6. Trigger the pipeline from `http://localhost:8080`
+4. Run the SQL schema files in `sql/` to create the tables
+5. Initialize Airflow and create an admin user
+6. Start Airflow with `airflow standalone`
+7. Trigger the pipeline from `http://localhost:8080`
 
 The pipeline runs automatically at 11am on weekdays once Airflow is running.
